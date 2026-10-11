@@ -1,0 +1,23 @@
+[package]
+name = "whistle"
+version = "0.1.0"
+edition = "2021"
+description = "Pure Rust runtime for Cactus Compute's Whistle speech-to-text model"
+readme = "README.md"
+
+[lib]
+name = "whistle"
+path = "src/lib.rs"
+
+[[bin]]
+name = "whistle"
+path = "src/main.rs"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+
+# The reference tests run whole transcriptions; unoptimised they take minutes.
+[profile.test]
+opt-level = 3
